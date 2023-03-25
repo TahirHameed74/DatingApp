@@ -1,0 +1,13 @@
+.container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.tableSegment{
+    height: calc(100% - 120px);
+    display: flex;
+    flex-direction: column;
+}
+.tableWrapper {
+    overflow-y: scroll;
+}

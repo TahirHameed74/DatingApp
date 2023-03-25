@@ -1,0 +1,41 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: i69app
+  labels:
+    lab: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      lab: frontend
+  template:
+    metadata:
+      labels:
+        lab: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: __REPLACE_IMAGE__
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+      - name: i69
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  namespace: i69app
+  labels:
+    lab: frontend
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    lab: frontend
+
